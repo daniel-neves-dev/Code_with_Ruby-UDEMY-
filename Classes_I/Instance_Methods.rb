@@ -6,7 +6,7 @@ class Gadget
   end
 
   def info
-    "#{@username} - #{@password} - #{@production_number}"
+    "User name: #{@username} - Password: #{@password} - Production numbergit#{@production_number}"
   end
 end
 
