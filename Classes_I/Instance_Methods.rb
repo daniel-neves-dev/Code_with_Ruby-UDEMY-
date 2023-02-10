@@ -6,8 +6,9 @@ class Gadget
   end
 
   def info
-    "User name: #{@username} - Password: #{@password} - Production numbergit#{@production_number}"
+    "User name: #{@username} - Password: #{@password} - Production numbergit#{@production_number} - Maid by#{self.class}"
   end
+
 end
 
 phone = Gadget.new
