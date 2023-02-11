@@ -7,14 +7,10 @@ class Gadget
     @password = password
   end
 
-  def info
-    "User: #{@username}, Password: #{@password}"
-  end
-
-  def validade_password(new_password) 
-    new_password.is_a?(String) && new_password.length >= 6 && new_password =~/\d/
+  def validade_password(new_password)
+    new_password.is_a?(String) && new_password.length >= 6 && new_password=~/\d/
   end
 end
 
-phone = Gadget.new("user001", "password001")
-puts phone.info
+phone = Gadget.new("user001", "cumputer001")
+puts phone.password
