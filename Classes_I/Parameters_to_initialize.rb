@@ -14,5 +14,7 @@ class Gadget
   end
 end
 
-phone = Gadget.new
+phone = Gadget.new("user_number01", "JamesBond")
+laptop = Gadget.new("user_number02", "007Bond")
 puts phone.info
+puts laptop.info
