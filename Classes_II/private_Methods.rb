@@ -11,7 +11,7 @@ class Gadget
     "User name: #{@username} - Production number: #{@production_number}"
   end
 
-  private
+  private #can only be called within the object
   def generate_production_number
     digits = rand(100..999)
     alphabet = ("A".."Z").to_a.sample(2).join
