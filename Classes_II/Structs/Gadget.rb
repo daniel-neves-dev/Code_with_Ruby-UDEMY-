@@ -1,24 +1,20 @@
-require_relative 'App_store.rb'
-
 class Gadget
 
   attr_accessor :username, :password
-  attr_reader :production_number
-  attr_reader :apps
+  attr_reader :serial_number, :apps 
 
   def initialize(username, password)
     @username = username
     @password = password
-    @production_number = generate_prodnumber
+    @serial_number = atomatic_generate
     @apps = []
   end
 
-  #Generating production number
-  def generate_prodnumber
+  def atomatic_generate
     digits = rand(100..999)
-    lethers = ("A".."Z").to_a.sample(2).join
-    year = 2023
-    "#{digits}#{lethers}#{year}"
+    letters = ("A".."Z").to_a.sample(2).join
+    year = Time.now.year
+    "#{digits}#{letters}#{year}"
   end
 
   def reset(username, password)
@@ -28,42 +24,18 @@ class Gadget
   end
 
   #Reseting password
-  def reset_password(new_password)
-    new_password.is_a?(String) && new_password.length >= 6 && new_password =~/\d/
+  def reseting_password(new_password)
+    new_password.is_a?(String) && new_password.length >= 6 && new_password =~ /\d/
   end
   def password=(new_password)
-    @password = new_password if reset_password(new_password)
+    @password = new_password if reseting_password(new_password)
   end
 
-  #General gadget informations
+  #General gadget information
   def info
-    "User name: #{self.username} - Password: #{self.password} - Production number: #{self.production_number}"
+    "User name: #{self.username} - Password: #{self.password} - Serial number: #{self.serial_number} - Made by: #{self.class}" 
   end
-
-  #Install APP
-  def install_app(name)
-    app = AppStore.find_app(name)
-    @apps << app unless @apps.include?(app)
-  end
-
-  #Unistall APP
-  def delete_app(name)
-    app = apps.find {|istalled_app| istalled_app.name == name}
-    apps.delete(app) unless app.nil?
-  end
-
 end
 
-
-laptop = Gadget.new("Daniel", "oliveria564")
+laptop = Gadget.new("Daniel963","oliveira123" )
 puts laptop.info
-
-laptop.install_app(:Chat)
-laptop.install_app(:Weather)
-laptop.install_app(:Twitter)
-puts laptop.apps
-
-puts 
-
-laptop.delete_app(:Chat)
-puts laptop.apps
