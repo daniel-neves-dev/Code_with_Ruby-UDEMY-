@@ -1,3 +1,5 @@
+require_relative 'App_store.rb'
+
 class Gadget
 
   attr_accessor :username, :password
@@ -33,9 +35,35 @@ class Gadget
 
   #General gadget information
   def info
-    "User name: #{self.username} - Password: #{self.password} - Serial number: #{self.serial_number} - Made by: #{self.class}" 
+    puts "\nUser name: #{self.username} - Password: #{self.password} - Serial number: #{self.serial_number} - Made by: #{self.class}" 
   end
-end
 
-laptop = Gadget.new("Daniel963","oliveira123" )
-puts laptop.info
+  #Installed apps
+  def to_s
+    puts "\nInstalled apps:#{@apps}\n"
+  end
+
+  #Installing apps
+  def install_app(name)
+    app = AppStore.find_app(name)
+    @apps << app unless @apps.include?(app)
+  end
+
+  #Removing apps
+  def delete_app(name)
+    app = apps.find {|installed_app| installed_app.name == name}
+    apps.delete(app) unless app.nil?
+  end
+
+end
+  
+laptop = Gadget.new("Daniel963","oliveira123")
+laptop.info
+
+laptop.install_app(:Chat)
+laptop.install_app(:Twitter)
+laptop.install_app(:Weather)
+laptop.to_s
+
+laptop.delete_app(:Chat)
+laptop.to_s
