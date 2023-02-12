@@ -43,7 +43,7 @@ class Gadget
   #Install APP
   def install_app(name)
     app = AppStore.find_app(name)
-    @apps << app unless @app.include?(app)
+    @apps << app unless @apps.include?(app)
   end
 
   #Unistall APP
@@ -55,6 +55,15 @@ class Gadget
 end
 
 
-phone = Gadget.new("newuser002", "standardpassower001")
-puts phone.info
+laptop = Gadget.new("Daniel", "oliveria564")
+puts laptop.info
 
+laptop.install_app(:Chat)
+laptop.install_app(:Weather)
+laptop.install_app(:Twitter)
+puts laptop.apps
+
+puts 
+
+laptop.delete_app(:Chat)
+puts laptop.apps
