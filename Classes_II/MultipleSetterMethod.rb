@@ -9,8 +9,12 @@ class Gadget
     @production_number = automatic_production_number
   end
 
+  def reset(username, password)
+    self.username = username
+    self.password = password
+  end
   #Reseting password
-  def password = (new_password) 
+  def password=(new_password) 
     @password = new_password if validade_password(new_password)
   end
 
@@ -27,10 +31,17 @@ class Gadget
 
   #Reseting password
   def validade_password(new_password) 
-    new_password.is_a(String) && new_password.length >= 6 && new_password =~ /\d/
+    new_password.is_a?(String) && new_password.length >= 6 && new_password =~ /\d/
   end
 
 end
 
 phone = Gadget.new("Oliveira", "JamesBond963")
-puts phone.info
+#puts phone.info
+puts phone.password
+phone.password = "456"
+puts phone.password
+phone.password = "oliveriua"
+puts phone.password
+phone.password = "oliveria456"
+puts phone.password
