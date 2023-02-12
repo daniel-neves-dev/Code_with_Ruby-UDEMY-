@@ -37,7 +37,9 @@ class Gadget
 end
 
 phone = Gadget.new("Oliveira", "JamesBond963")
-#puts phone.info
+puts
+puts phone.info
+puts
 puts phone.password
 phone.password = "456"
 puts phone.password
@@ -45,3 +47,5 @@ phone.password = "oliveriua"
 puts phone.password
 phone.password = "oliveria456"
 puts phone.password
+puts 
+puts phone.info
